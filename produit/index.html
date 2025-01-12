@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+</head>
+<body>
+    <nav>
+        <ul id="left">
+            <li class="left">A propos</li>
+            <li class="left"><a href="../produit/index.html">Produits</a></li>
+            <li class="left"><a href="../vente/index.php">Vents</a></li>
+            <li class="left"><a href="../Requetes/index.php">Requetes</a></li>
+            <li class="left">Aide</li>
+            <li class="right"><a href="../connexion/index.html">Deconnexion</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>Enregistrer un produit</h1>
+        <form  onsubmit="return verif()" action="main.php" method="post">
+            <label for="nom">Nom produit:</label><br>
+            <input type="text" id="nom" name="nom">
+            <p id="e2" class="e"></p>
+            <label for="prix">Prix produit:</label><br>
+            <input type="number" id="prix" name="prix">
+            <p id="e3" class="e"></p>
+            <label for="q">quantite produit:</label><br>
+            <input type="number" id="q" name="qua">
+            <p id="e4" class="e"></p>
+            <h4 style="color: green; text-align: center;" id="msg"></h4>
+            <input type="submit" value="Enregistree" id="b">
+        </form>
+    </main>
+    <footer>
+        <p>&copy 2024 Touts Droits reservée .</p>
+        <p>Site web crée par "<a href="mailto:anoirlool@gmail.com">malali3b@gmail.com</a>"</p>
+    </footer>
+</body>
+</html>

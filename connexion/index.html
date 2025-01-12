@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+</head>
+<body>
+    <main>
+        <form onsubmit="return verif()" action="main1.php" method="post">
+            <h1>Formulaire de connexion</h1>
+            <label for="nom">Nom d'utilisateur:</label>
+            <input type="text" id="nom" name="nom">
+            <p id="e3"  classe="e"></p>
+            <label for="mp">Mot de passe:</label>
+            <input type="password" id="mp" name="mp">
+            <p id="e1"  classe="e"></p>
+            <div>
+                <input type="checkbox" id="ch" onclick="affiche_pass()">
+                <label for="ch">Afficher le mot de passe</label>
+            </div>
+            <input type="submit" value="S'inscrire" class="b" onclick="login()">
+            <p class="d">Nouveau compte? <a href="../inscrit/index.html">Créer un nouveau compte</a></p>
+        </form>
+    </main>
+
+</body>
+</html>

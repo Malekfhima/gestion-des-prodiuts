@@ -1,0 +1,94 @@
+nav {
+    background-color:#93441A;
+    padding: 20px 0; 
+    border-radius: 20px;
+    margin-top: 3px;
+}
+nav ul {
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0; 
+    display: flex; 
+    justify-content: center; 
+    
+}
+nav ul li {
+    margin: 0 10px; 
+    color: white; 
+    font-size: 18px; 
+    font-family: Arial, sans-serif; 
+}
+nav ul li a{
+    text-decoration: none;
+    color: white;
+}
+nav ul li:hover {
+    color: #ffb400;
+    cursor: pointer; 
+}
+footer {
+    background-color:#B67332;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    border-radius: 30px;
+    height: 80px;
+
+}
+footer p{
+    color: white;
+}
+footer p a{
+    text-decoration: none;
+    color: white;
+}
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    margin: 0 auto;
+}
+th , td {
+    padding: 15px;
+    background-color: rgba(255,255,255,0.2);
+    color: #fff;
+}
+th {
+    text-align: center;
+}

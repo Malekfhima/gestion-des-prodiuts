@@ -1,0 +1,175 @@
+/* Styles généraux */
+body {
+  margin: 0;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 0;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1f1f1f, #292929);
+}
+
+/* Animation de fade-in et déplacement */
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation de survol : effet 3D */
+@keyframes hover3D {
+  0%, 100% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(20deg);
+  }
+}
+
+/* Background styles */
+.background-one,
+.background-two,
+.background-three,
+.background-4,
+.background-5 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  animation: fadeInSlide 1s ease-out forwards;
+}
+
+.background-one {
+  background: radial-gradient(circle, #151515, #1c1c1c);
+  animation-delay: 0.2s;
+}
+
+.background-two {
+  background: radial-gradient(circle, #222, #292929);
+  animation-delay: 0.4s;
+}
+
+.background-three {
+  background: radial-gradient(circle, #292929, #323232);
+  animation-delay: 0.6s;
+}
+
+.background-4 {
+  background: radial-gradient(circle, #323232, #3b3b3b);
+  animation-delay: 0.8s;
+}
+
+.background-5 {
+  background: radial-gradient(circle, #3e454e, #2a2e32);
+  animation-delay: 1s;
+}
+
+/* Conteneur de liens */
+.link-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
+
+/* Style de base pour les liens */
+a {
+  font-family: "Bungee", cursive;
+  font-size: 2em;
+  text-decoration: none;
+  color: #ffffff;
+  position: relative;
+  transition: all 0.5s ease;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  transform-origin: center;
+}
+
+/* Effet au survol */
+a:hover {
+  animation: hover3D 0.8s infinite;
+}
+
+/* Animation de gradient pour les liens */
+@keyframes gradientText {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Lien 1 */
+.link-one {
+  background: linear-gradient(45deg, #53d9d1, #0066ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradientText 3s ease infinite;
+}
+
+.link-one:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Lien 2 */
+.link-two {
+  background: linear-gradient(45deg, #f27b9b, #ff3366);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradientText 3s ease infinite;
+}
+
+.link-two:hover {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+/* Lien 3 */
+.link-three {
+  background: linear-gradient(45deg, #eb7132, #ff9933);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradientText 3s ease infinite;
+}
+
+.link-three:hover {
+  transform: scale(1.1) rotate(10deg);
+}
+
+/* Lien 4 */
+.link-four {
+  background: linear-gradient(45deg, #7ed321, #b4ec51);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradientText 3s ease infinite;
+}
+
+.link-four:hover {
+  transform: scale(1.1) rotate(-10deg);
+}
+
+/* Lien 5 */
+.link-five {
+  background: linear-gradient(45deg, #ffffff, #e4e4e4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradientText 3s ease infinite;
+}
+
+.link-five:hover {
+  transform: scale(1.1) rotate(15deg);
+}
