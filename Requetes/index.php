@@ -47,7 +47,7 @@
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $requete_date = isset($_POST['requete']) ? $_POST['requete'] : null;
                     if ($requete_date) {
-                        $stmt = $cnx->prepare("SELECT DP, QV, DV FROM vent WHERE DP = ?");
+                        $stmt = $cnx->prepare("SELECT id, DP, QV, DV FROM vent WHERE DP = ?");
                         $stmt->bind_param("s", $requete_date);
                         $stmt->execute();
                         $result = $stmt->get_result();
@@ -62,7 +62,7 @@
                                     <input type='hidden' name='id' value='" . htmlspecialchars($donnees['id']) . "'>
                                     <button type='submit' class='btn btn-danger'>Annuler</button> 
                                 </form>  
-                                      </td>";
+                                    </td>";
                                 echo "</tr>";
                             }
                         } else {
@@ -74,7 +74,8 @@
                         echo "<tr><td colspan='4'>Aucune date n'a été fournie.</td></tr>";
                     }
                 }
-            ?>
+                ?>
+
             </tbody>
         </table>
     </main>
