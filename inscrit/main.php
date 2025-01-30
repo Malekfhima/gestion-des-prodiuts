@@ -8,6 +8,7 @@ if($nb>0){
     echo"<script>alert('le compte est deja exeicete');</script>";
 }else{
     $res=mysqli_query($cnx,"insert into personne (passe,nom,mail,monnaire) values('$mp','$nom','$email','$flous');");
+    echo"<script>alert('inscrit fait avec sucssee!!');</script>";
     sleep(1);
 header("location:../connexion/index.html");
 mysqli_close($cnx);
