@@ -1,3 +1,3 @@
 <?php
-$cnx = mysqli_connect("127.0.0.1","root","","ifbreak");
+$cnx = mysqli_connect("127.0.0.1","root","","ch_ml_fh");
 ?>

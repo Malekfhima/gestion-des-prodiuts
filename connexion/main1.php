@@ -1,7 +1,7 @@
 <?php
 session_start();
 extract($_POST);
-$cnx = mysqli_connect("127.0.0.1","root","","ifbreak");
+include("../connect.php");
 $req = "SELECT nom,passe,id from personne where(nom = '$nom' and passe = '$mp');" or die("problim L4");
 $res = mysqli_query($cnx,$req);
 $nb=mysqli_num_rows($res);

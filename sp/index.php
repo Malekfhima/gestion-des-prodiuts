@@ -1,7 +1,7 @@
 <?php
 session_start();
 $id=$_SESSION['id'];
-$cnx = mysqli_connect("127.0.0.1","root","","ifbreak");
+include("../connect.php");
 $req = "SELECT code,nom,prix,qua from produit where(id='$id');" or die("problim L4");
 $res = mysqli_query($cnx,$req);
 ?>
