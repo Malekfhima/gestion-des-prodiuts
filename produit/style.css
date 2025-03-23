@@ -1,111 +1,252 @@
-nav {
-    background-color:#93441A;
-    padding: 20px 0; 
-    border-radius: 20px;
-    margin-top: 3px;
-}
-nav ul {
-    list-style-type: none; 
-    margin: 0; 
-    padding: 0; 
-    display: flex; 
-    justify-content: center; 
-}
-nav ul li {
-    margin: 0 10px; 
-    color: white; 
-    font-size: 18px; 
-    font-family: Arial, sans-serif; 
-}
-nav ul li a {
-    text-decoration: none;
-    color: white;
-}
-nav ul li:hover {
-    color: #ffb400;
-    cursor: pointer; 
-}
-footer {
-    background-color:#B67332;
-    color: white;
-    text-align: center;
-    padding: 1rem 0;
-    border-radius: 30px;
-    height: 80px;
-}
-footer p{
-    color: white;
-}
-footer p a{
-    text-decoration: none;
-    color: white;
-}
-#left{
-    position: relative;
-    right: 490px;
-}
-.right{
-    position: relative;
-    left: 970px;
-}
-main{
-    background-color: #EEE6D8;
-    border-radius: 40px;
-    height: 450px;
-    padding:20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-
-}
-h1{
-    text-align: center;
-    color: #45729A;
-}
-input{
-    width:1000px;
-}
-body{
+/* Styles de base */
+body {
     font-family: Arial, sans-serif;
     margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #93441A;
+    padding: 10px 0;
+    border-radius: 20px;
+    margin: 3px 10px 0 10px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+/* Styles pour l'icône de menu */
+.menu-icon {
+    display: none;
+    /* Caché par défaut */
+    flex-direction: column;
+    cursor: pointer;
     padding: 10px;
 }
-form label, form input{
-    display: block;
-    width: 100%;
+
+.menu-icon .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+    transition: transform 0.3s, opacity 0.3s;
 }
-input{
-    box-sizing: border-box;
-    padding: 10px;
-    font-size: 16px;
+
+/* Animation pour l'icône de menu */
+.menu-icon.open .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.menu-icon.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-icon.open .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Styles pour la navigation */
+.nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 10px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.nav-links li a:hover {
+    background-color: #ffb400;
+    color: #333;
+}
+
+.right {
+    margin-left: auto;
+    /* Aligne l'élément de déconnexion à droite */
+}
+
+/* Styles pour le contenu principal */
+main {
+    background-color: #EEE6D8;
     border-radius: 40px;
+    padding: 20px;
+    margin: 20px;
 }
-#b{
+
+h1 {
+    text-align: center;
+    color: #45729A;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 40px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+form button {
     width: 100%;
     padding: 10px;
     font-size: 16px;
     background-color: #DAAB3A;
     color: white;
     border: none;
-    cursor: pointer;  
-    border-radius: 40px;  
-}
-label{
-    font-family: 'Roboto', sans-serif ;
-    color: #555;
-}
-button:hover{
-    background-color:#555;;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-body{
-    color: #e5e7e6;
+form button:hover {
+    background-color: #B67332;
 }
-.e{
-    color : red;
-}
-.left a{
-    text-decoration: none;
+
+/* Styles pour le pied de page */
+footer {
+    background-color: #B67332;
     color: white;
+    text-align: center;
+    padding: 1rem 0;
+    border-radius: 30px;
+    margin: 20px 10px 0 10px;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Messages d'erreur et de succès */
+.e {
+    color: red;
+    font-size: 0.875em;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+.success-message {
+    color: green;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Styles Responsive */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: flex;
+        /* Afficher l'icône de menu sur les petits écrans */
+    }
+
+    .nav-links {
+        display: none;
+        /* Cacher le menu par défaut */
+        flex-direction: column;
+        width: 100%;
+        background-color: #93441A;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        display: flex;
+        /* Afficher le menu lorsqu'il est activé */
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .nav-links li a {
+        font-size: 16px;
+    }
+
+    main {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    form input,
+    form button {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        margin: 3px 5px 0 5px;
+    }
+
+    .nav-links li a {
+        font-size: 14px;
+    }
+
+    main {
+        margin: 5px;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.2em;
+    }
+
+    form input,
+    form button {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    footer {
+        margin: 10px 5px 0 5px;
+        padding: 0.5rem 0;
+    }
 }

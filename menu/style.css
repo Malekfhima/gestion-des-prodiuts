@@ -1,13 +1,28 @@
 /* Styles généraux */
 body {
   margin: 0;
+  font-family: 'Bungee', cursive;
   height: 100vh;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 0;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   background: linear-gradient(135deg, #1f1f1f, #292929);
+  color: #ffffff;
+  overflow: hidden;
+}
+
+main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  padding: 20px;
+}
+
+footer {
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  font-size: 0.9em;
 }
 
 /* Animation de fade-in et déplacement */
@@ -16,33 +31,29 @@ body {
     opacity: 0;
     transform: translateY(50px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Animation de survol : effet 3D */
-@keyframes hover3D {
-  0%, 100% {
-    transform: rotateY(0deg);
-  }
-  50% {
-    transform: rotateY(20deg);
-  }
-}
-
-/* Background styles */
+/* Styles des divs de fond */
 .background-one,
 .background-two,
 .background-three,
-.background-4,
-.background-5 {
+.background-four,
+.background-five {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
   animation: fadeInSlide 1s ease-out forwards;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  text-align: center;
 }
 
 .background-one {
@@ -60,40 +71,53 @@ body {
   animation-delay: 0.6s;
 }
 
-.background-4 {
+.background-four {
   background: radial-gradient(circle, #323232, #3b3b3b);
   animation-delay: 0.8s;
 }
 
-.background-5 {
+.background-five {
   background: radial-gradient(circle, #3e454e, #2a2e32);
   animation-delay: 1s;
 }
 
-/* Conteneur de liens */
-.link-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  position: relative;
-}
-
-/* Style de base pour les liens */
-a {
-  font-family: "Bungee", cursive;
-  font-size: 2em;
-  text-decoration: none;
+/* Styles pour les icônes */
+.icon {
+  font-size: 3em;
+  /* Taille des icônes */
+  margin-bottom: 15px;
   color: #ffffff;
-  position: relative;
-  transition: all 0.5s ease;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-  transform-origin: center;
+  /* Couleur des icônes */
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
-/* Effet au survol */
-a:hover {
-  animation: hover3D 0.8s infinite;
+/* Effet au survol des icônes */
+.icon:hover {
+  transform: scale(1.2);
+  color: #53d9d1;
+  /* Changement de couleur au survol */
+}
+
+/* Styles pour les liens */
+.background-one a,
+.background-two a,
+.background-three a,
+.background-four a,
+.background-five a {
+  font-size: 1.5em;
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+}
+
+/* Styles pour les paragraphes */
+.background-one p,
+.background-two p,
+.background-three p,
+.background-four p,
+.background-five p {
+  font-size: 1em;
+  margin: 0;
 }
 
 /* Animation de gradient pour les liens */
@@ -101,9 +125,11 @@ a:hover {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }

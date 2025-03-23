@@ -3,15 +3,15 @@ session_start();
 extract($_POST);
 include("../connect.php");
 $req = "SELECT nom,passe,id from personne where(nom = '$nom' and passe = '$mp');" or die("problim L4");
-$res = mysqli_query($cnx,$req);
-$nb=mysqli_num_rows($res);
-if($nb<1){
+$res = mysqli_query($cnx, $req);
+$nb = mysqli_num_rows($res);
+if ($nb < 1) {
 
-    header("refresh:0;url=index.html"); 
+    header("refresh:0;url=index.html");
     echo '<script>alert("makich m3ana a 5ouya !");</script>';
-}else{
+} else {
     $id = mysqli_fetch_array($res);
-    $_SESSION['id']=$id[2];
+    $_SESSION['id'] = $id[2];
     header("location:../menu/index.html");
 }
 mysqli_close($cnx);

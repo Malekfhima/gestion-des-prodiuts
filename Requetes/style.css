@@ -5,35 +5,46 @@ body {
     padding: 0;
     background-color: #f4f4f9;
     color: #333;
+    line-height: 1.6;
 }
 
 /* Navigation */
 nav {
-    background-color:#93441A;
-    padding: 20px 0; 
+    background-color: #93441A;
+    padding: 10px 0;
     border-radius: 20px;
-    margin-top: 3px;
+    margin: 10px;
 }
+
 nav ul {
-    list-style-type: none; 
-    margin: 0; 
-    padding: 0; 
-    display: flex; 
-    justify-content: center; 
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
+
 nav ul li {
-    margin: 0 10px; 
-    color: white; 
-    font-size: 18px; 
-    font-family: Arial, sans-serif; 
+    margin: 5px 10px;
+    color: white;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
 }
+
 nav ul li a {
     text-decoration: none;
     color: white;
+    transition: color 0.3s ease;
 }
+
 nav ul li:hover {
     color: #ffb400;
-    cursor: pointer; 
+    cursor: pointer;
+}
+
+nav ul li a:hover {
+    color: #ffb400;
 }
 
 /* Bouton PDF */
@@ -46,6 +57,7 @@ nav ul li:hover {
     cursor: pointer;
     font-size: 16px;
     margin-bottom: 20px;
+    transition: background-color 0.3s ease;
 }
 
 .btn:hover {
@@ -65,6 +77,9 @@ main {
 /* Formulaire */
 form {
     margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 form label {
@@ -86,6 +101,7 @@ form input[type="submit"] {
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 form input[type="submit"]:hover {
@@ -127,17 +143,46 @@ p {
 }
 
 footer {
-    background-color:#B67332;
+    background-color: #B67332;
     color: white;
     text-align: center;
     padding: 1rem 0;
     border-radius: 30px;
-    height: 80px;
+    margin: 10px;
 }
+
 footer p {
     color: white;
+    margin: 5px 0;
 }
+
 footer p a {
     text-decoration: none;
     color: white;
+    transition: color 0.3s ease;
+}
+
+footer p a:hover {
+    color: #ffb400;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    form {
+        flex-direction: column;
+    }
+
+    form input[type="date"] {
+        width: 100%;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+    }
 }

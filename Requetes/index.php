@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -10,6 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </head>
+
 <body>
     <nav>
         <ul id="left">
@@ -39,7 +41,7 @@
                 </tr>
             </thead>
             <tbody>
-            <?php
+                <?php
                 include("../connect.php");
                 session_start();
                 $id = $_SESSION['id'];
@@ -79,17 +81,17 @@
         </table>
     </main>
     <script>
-        document.getElementById('convertToPdf').addEventListener('click', function() {
+        document.getElementById('convertToPdf').addEventListener('click', function () {
             const { jsPDF } = window.jspdf;
             html2canvas(document.body).then(canvas => {
                 let pdf = new jsPDF('p', 'pt', 'letter');
                 let imgData = canvas.toDataURL('image/png');
-                let imgWidth = 595.28; 
-                let pageHeight = 841.89; 
+                let imgWidth = 595.28;
+                let pageHeight = 841.89;
                 let imgHeight = canvas.height * imgWidth / canvas.width;
                 let heightLeft = imgHeight;
                 let position = 0;
-                
+
                 pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
                 heightLeft -= pageHeight;
 
@@ -109,4 +111,5 @@
         <p>Site web créé par <a href="mailto:malali3b@gmail.com">malali3b@gmail.com</a></p>
     </footer>
 </body>
+
 </html>

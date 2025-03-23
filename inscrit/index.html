@@ -1,47 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <script src="main.js"></script>
-    <title>Document</title>
+    <title>Formulaire d'inscription</title>
 </head>
+
 <body>
     <main>
         <form action="main.php" onsubmit="return verif()" method="post">
             <h1>Formulaire d'inscription</h1>
-            <label for="">Nom d'utilisateur:</label>
-            <input type="text" id="nom" name = "nom">
-            <p id="e1"  class="e"></p>
-            <label for="">Mot de passe:</label>
-            <input type="password" id="mp1" name ="mp">
-            <p id="e2"  class="e"></p>
-            <label for="">Confirmer le mot de passe:</label>
-            <input type="password" id="mp2">
-            <p id="e3"  class="e"></p>
-            <label for="">Email:</label>
-            <input type="email" id="mail" name="email"><br>
-            <p id="e4"  class="e"></p>
-            <div>
-                <input type="checkbox" name="" class="ch" id="ch" onclick="affiche_pass()"><label for=""> Afficher les mots de passe</label>
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="nom" name="nom" placeholder="Nom d'utilisateur">
             </div>
-            <br><select name="flous" id="flous">
-                <option value="">Sélectionner votre monnaire</option>
-                <option value="EUR">Euro (EUR)</option>
-                <option value="FCFA">Franc CFA(FCFA)</option>
-                <option value="USD">Dollar Américain (USD)</option>
-                <option value="CAD">Dolaar canadien (CAD)</option>
-                <option value="DZN">Dinar algérien (DZN)</option>
-                <option value="TND">Dinar tunisien (TND)</option>
-                <option value="MAD">Dirham marocain (MAD)</option>
-                <option value="GBP">Livre sterling (GBP)</option>
-            </select><br>
-            <p id="e5"  class="e"></p>
+            <p id="e1" class="e"></p>
+
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="mp1" name="mp" placeholder="Mot de passe">
+            </div>
+            <p id="e2" class="e"></p>
+
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="mp2" placeholder="Confirmer le mot de passe">
+            </div>
+            <p id="e3" class="e"></p>
+
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="mail" name="email" placeholder="Email">
+            </div>
+            <p id="e4" class="e"></p>
+
+            <div class="input-group">
+                <i class="fas fa-money-bill-wave"></i>
+                <select name="flous" id="flous">
+                    <option value="">Sélectionner votre monnaie</option>
+                    <option value="EUR">Euro (EUR)</option>
+                    <option value="FCFA">Franc CFA (FCFA)</option>
+                    <option value="USD">Dollar Américain (USD)</option>
+                    <option value="CAD">Dollar canadien (CAD)</option>
+                    <option value="DZN">Dinar algérien (DZN)</option>
+                    <option value="TND">Dinar tunisien (TND)</option>
+                    <option value="MAD">Dirham marocain (MAD)</option>
+                    <option value="GBP">Livre sterling (GBP)</option>
+                </select>
+            </div>
+            <p id="e5" class="e"></p>
+
+            <div class="checkbox-group">
+                <input type="checkbox" class="ch" id="ch" onclick="affiche_pass()">
+                <label for="ch">Afficher les mots de passe</label>
+            </div>
+
             <h4 style="color: green; text-align: center;" id="msg"></h4>
-            <input type="submit" value="S'inscrire" class="b"><br>
+            <input type="submit" value="S'inscrire" class="b">
             <p class="d">Déjà inscrit? <a href="../connexion/index.html">Connectez-vous ici</a></p>
         </form>
     </main>
 </body>
+
 </html>

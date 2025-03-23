@@ -1,42 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Enregistrer un produit</title>
     <link rel="stylesheet" href="style.css">
-    <script src="main.js"></script>
+    <script src="main.js" defer></script>
 </head>
+
 <body>
-    <nav>
-        <ul id="left">
-            <li class="left">A propos</li>
-            <li class="left"><a href="../produit/index.html">Produits</a></li>
-            <li class="left"><a href="../vente/index.php">Vents</a></li>
-            <li class="left"><a href="../Requetes/index.php">Requetes</a></li>
-            <li class="left">Aide</li>
-            <li class="right"><a href="../connexion/index.html">Deconnexion</a></li>
-        </ul>
-    </nav>
+    <header>
+        <nav>
+            <!-- Icône du menu hamburger -->
+            <div class="menu-icon" id="menu-icon">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <!-- Menu de navigation -->
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#" aria-label="À propos">À propos</a></li>
+                <li><a href="../produit/index.html" aria-label="Produits">Produits</a></li>
+                <li><a href="../vente/index.php" aria-label="Ventes">Ventes</a></li>
+                <li><a href="../Requetes/index.php" aria-label="Requêtes">Requêtes</a></li>
+                <li><a href="#" aria-label="Aide">Aide</a></li>
+                <li class="right"><a href="../connexion/index.html" aria-label="Déconnexion">Déconnexion</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <main>
         <h1>Enregistrer un produit</h1>
-        <form  onsubmit="return verif()" action="main.php" method="post">
-            <label for="nom">Nom produit:</label><br>
-            <input type="text" id="nom" name="nom">
-            <p id="e2" class="e"></p>
-            <label for="prix">Prix produit:</label><br>
-            <input type="number" id="prix" name="prix">
-            <p id="e3" class="e"></p>
-            <label for="q">quantite produit:</label><br>
-            <input type="number" id="q" name="qua">
-            <p id="e4" class="e"></p>
-            <h4 style="color: green; text-align: center;" id="msg"></h4>
-            <input type="submit" value="Enregistree" id="b">
+        <form onsubmit="return verif()" action="main.php" method="post">
+            <div>
+                <label for="nom">Nom du produit :</label><br>
+                <input type="text" id="nom" name="nom" required>
+                <p id="e2" class="e"></p>
+            </div>
+            <div>
+                <label for="prix">Prix du produit :</label><br>
+                <input type="number" id="prix" name="prix" required>
+                <p id="e3" class="e"></p>
+            </div>
+            <div>
+                <label for="q">Quantité du produit :</label><br>
+                <input type="number" id="q" name="qua" required>
+                <p id="e4" class="e"></p>
+            </div>
+            <div>
+                <p id="msg" class="success-message"></p>
+            </div>
+            <button type="submit" id="b">Enregistrer</button>
         </form>
     </main>
+
     <footer>
-        <p>&copy 2024 Touts Droits reservée .</p>
-        <p>Site web crée par "<a href="mailto:anoirlool@gmail.com">malali3b@gmail.com</a>"</p>
+        <p>&copy; 2024 Tous droits réservés.</p>
+        <p>Site web créé par <a href="mailto:anoirlool@gmail.com">malali3b@gmail.com</a></p>
     </footer>
+    <script>
+        // Sélectionner l'icône de menu et les liens de navigation
+        const menuIcon = document.getElementById('menu-icon');
+        const navLinks = document.getElementById('nav-links');
+
+        // Ajouter un écouteur d'événement pour l'icône de menu
+        menuIcon.addEventListener('click', () => {
+            // Basculer la classe "active" sur les liens de navigation
+            navLinks.classList.toggle('active');
+
+            // Animation de l'icône de menu (optionnel)
+            menuIcon.classList.toggle('open');
+        });
+    </script>
 </body>
+
 </html>

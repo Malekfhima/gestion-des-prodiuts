@@ -1,54 +1,91 @@
+/* Styles globaux */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     background-color: #f0f0f5;
     color: #333;
+    line-height: 1.6;
 }
-.header{
-    background-color: #4CAF50;
-    color: white;
-    text-align: center;
-    padding: 15px 0;
-}
-.header a{
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-}
-.header a:hover{
-    text-decoration: underline;
-}
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
-}
-.form-section, .sales-section {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    flex: 1;
-    min-width: 300px;
-}
-.form-section {
-    margin-right: 10px;
-    height: auto;
 
+/* Navigation */
+nav {
+    background-color: #93441A;
+    padding: 10px 0;
+    border-radius: 20px;
+    margin: 10px;
 }
-.sales-section {
-    margin-left: 10px;
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
+
+nav ul li {
+    margin: 5px 10px;
+    color: white;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+nav ul li:hover {
+    color: #ffb400;
+    cursor: pointer;
+}
+
+nav ul li a:hover {
+    color: #ffb400;
+}
+
+/* Bouton PDF */
+.btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #c82333;
+}
+
+/* Contenu principal */
+main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Formulaire */
 form {
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
 }
+
 .buttons {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
 }
+
 .product-row {
     display: flex;
     align-items: center;
@@ -56,15 +93,19 @@ form {
     flex-wrap: wrap;
     gap: 10px;
 }
-.product-row > div {
+
+.product-row>div {
     flex: 1;
 }
+
 label {
     display: block;
     margin-bottom: 5px;
     color: #666;
 }
-select, input {
+
+select,
+input {
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
@@ -72,27 +113,35 @@ select, input {
     width: 100%;
     box-sizing: border-box;
 }
+
 input[type="number"] {
     width: auto;
 }
-.submit-button, .refresh-button{
+
+.submit-button,
+.refresh-button {
     padding: 15px 30px;
     font-size: 18px;
     border: none;
     cursor: pointer;
     border-radius: 4px;
 }
+
 .submit-button {
     background-color: #4CAF50;
     color: white;
 }
-.refresh-button, .add-product{
+
+.refresh-button,
+.add-product {
     background-color: #2196F3;
     color: white;
 }
+
 .submit-button:hover {
     background-color: #45a049;
 }
+
 .refresh-button:hover {
     background-color: #1e88e5;
 }
@@ -102,55 +151,73 @@ table {
     border-collapse: collapse;
     margin-top: 20px;
 }
-table, th, td {
+
+table,
+th,
+td {
     border: 1px solid #ddd;
 }
-th, td {
+
+th,
+td {
     padding: 10px;
     text-align: left;
 }
+
 th {
     background-color: #f2f2f2;
 }
+
 tr:nth-child(even) {
     background-color: #f9f9f9;
 }
+
 tr:hover {
     background-color: #f1f1f1;
 }
+
 .summary {
     margin-bottom: 20px;
 }
+
 /* Media queries for responsiveness */
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
         gap: 10px;
     }
-    .form-section, .sales-section {
+
+    .form-section,
+    .sales-section {
         margin: 0;
         flex: 1 1 100%;
     }
 }
+
 @media (max-width: 480px) {
     .buttons {
         flex-direction: column;
         gap: 5px;
     }
-    .submit-button, .refresh-button {
+
+    .submit-button,
+    .refresh-button {
         width: 100%;
         font-size: 16px;
     }
+
     .product-row {
         flex-direction: column;
         align-items: flex-start;
     }
-    .product-row > div {
+
+    .product-row>div {
         width: 100%;
         margin-bottom: 10px;
     }
 }
-#db{
+
+#db {
     color: white;
     background-color: #007bff;
     padding: 10px 20px;
@@ -163,65 +230,77 @@ tr:hover {
     display: inline-block;
     margin-bottom: 5px;
 }
-.remove-product{
+
+.remove-product {
     background-color: red;
-    color: white ;
+    color: white;
 }
-.remove-product, .add-product{
+
+.remove-product,
+.add-product {
     border: none;
     border-radius: 4px;
 }
+
 nav {
-    background-color:#93441A;
-    padding: 20px 0; 
+    background-color: #93441A;
+    padding: 20px 0;
     margin-top: 3px;
     border-radius: 20px;
-    
+
 }
+
 nav ul {
-    list-style-type: none; 
-    margin: 0; 
-    padding: 0; 
-    display: flex; 
-    justify-content: center; 
-    
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+
 }
+
 nav ul li {
-    margin: 0 10px; 
-    color: white; 
-    font-size: 18px; 
-    font-family: Arial, sans-serif; 
+    margin: 0 10px;
+    color: white;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
 }
 
 nav ul li:hover {
     color: #ffb400;
-    cursor: pointer; 
+    cursor: pointer;
 }
-#left a{
+
+#left a {
     text-decoration: none;
     color: white;
 }
+
 footer {
-    background-color:#B67332;
+    background-color: #B67332;
     color: white;
     text-align: center;
     padding: 1rem 0;
     border-radius: 30px;
-    
+
 
 }
-footer p{
+
+footer p {
     color: white;
 }
-footer p a{
+
+footer p a {
     text-decoration: none;
     color: white;
 }
-button a{
+
+button a {
     text-decoration: none;
     color: white;
 }
-button a:hover{
+
+button a:hover {
     text-decoration: none;
     color: white;
 }
