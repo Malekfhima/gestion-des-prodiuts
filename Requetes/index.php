@@ -1,3 +1,40 @@
+<?php
+include("../connect.php");
+session_start();
+
+// Vérifier si l'utilisateur est connecté
+if (!isset($_SESSION['id'])) {
+    header("Location: ../connexion/index.html");
+    exit();
+}
+
+$id = $_SESSION['id'];
+
+// Traitement de la recherche par date
+$ventes = [];
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['requete'])) {
+    $requete_date = $_POST['requete'];
+    
+    // Valider le format de la date
+    if (DateTime::createFromFormat('Y-m-d', $requete_date) !== false) {
+        $stmt = $cnx->prepare("SELECT id, DP, QV, DV FROM vent WHERE DATE(DV) = ?");
+        $stmt->bind_param("s", $requete_date);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        if ($result->num_rows > 0) {
+            while ($donnees = $result->fetch_assoc()) {
+                $ventes[] = $donnees;
+            }
+        } else {
+            $info_message = "Aucune vente trouvée pour la date " . htmlspecialchars($requete_date);
+        }
+    } else {
+        $error_message = "Format de date invalide. Utilisez le format AAAA-MM-JJ.";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -10,27 +47,45 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <style>
+        .alert { padding: 15px; margin-bottom: 20px; border: 1px solid transparent; border-radius: 4px; }
+        .alert-success { color: #3c763d; background-color: #dff0d8; border-color: #d6e9c6; }
+        .alert-danger { color: #a94442; background-color: #f2dede; border-color: #ebccd1; }
+        .alert-info { color: #31708f; background-color: #d9edf7; border-color: #bce8f1; }
+    </style>
 </head>
 
 <body>
     <nav>
         <ul id="left">
-            <li class="left">A propos</li>
+            <li class="left"><a href="../contact_us/index.html"> A propos</a></li>
             <li class="left"><a href="../produit/index.html">Produits</a></li>
             <li class="left"><a href="../vente/index.php">Ventes</a></li>
-            <li class="left"><a href="#">Requetes</a></li>
-            <li class="left">Aide</li>
-            <li class="right"><a href="../connexion/index.html">Deconnexion</a></li>
+            <li class="left"><a href="../Requetes/index.php">Requêtes</a></li>
+            <li><a href="../sp/index.php">Afficher les produits</a></li>
+            <li class="right"><a href="../logout.php">Déconnexion</a></li>
         </ul>
     </nav>
     <main>
+        <?php if (isset($success_message)): ?>
+            <div class="alert alert-success"><?php echo $success_message; ?></div>
+        <?php endif; ?>
+        
+        <?php if (isset($error_message)): ?>
+            <div class="alert alert-danger"><?php echo $error_message; ?></div>
+        <?php endif; ?>
+        
+        <?php if (isset($info_message)): ?>
+            <div class="alert alert-info"><?php echo $info_message; ?></div>
+        <?php endif; ?>
+        
         <button id="convertToPdf" class="btn btn-danger">Convertir la page en PDF</button>
         <h1>Rechercher des ventes effectuées à une date donnée</h1>
         <form method="post">
             <label for="requete">Date:</label>
-            <input type="date" name="requete" id="requete">
+            <input type="date" name="requete" id="requete" required>
             <input type="submit" value="Recherche">
-        </form>
+        </form style="margin-botton=2px">
         <table>
             <thead>
                 <tr>
@@ -41,42 +96,25 @@
                 </tr>
             </thead>
             <tbody>
-                <?php
-                include("../connect.php");
-                session_start();
-                $id = $_SESSION['id'];
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    $requete_date = isset($_POST['requete']) ? $_POST['requete'] : null;
-                    if ($requete_date) {
-                        $stmt = $cnx->prepare("SELECT id, DP, QV, DV FROM vent WHERE DP = ?");
-                        $stmt->bind_param("s", $requete_date);
-                        $stmt->execute();
-                        $result = $stmt->get_result();
-                        if ($result->num_rows > 0) {
-                            while ($donnees = $result->fetch_assoc()) {
-                                echo "<tr>";
-                                echo "<td>" . htmlspecialchars($donnees['DP']) . "</td>";
-                                echo "<td>" . htmlspecialchars($donnees['QV']) . "</td>";
-                                echo "<td>" . htmlspecialchars($donnees['DV']) . "</td>";
-                                echo "<td>
-                                <form method='post' action='annuler.php'>
-                                    <input type='hidden' name='id' value='" . htmlspecialchars($donnees['id']) . "'>
-                                    <button type='submit' class='btn btn-danger'>Annuler</button> 
-                                </form>  
-                                    </td>";
-                                echo "</tr>";
-                            }
-                        } else {
-                            echo "<tr><td colspan='4'>Aucune vente trouvée pour cette date.</td></tr>";
-                        }
-
-                        $stmt->close();
-                    } else {
-                        echo "<tr><td colspan='4'>Aucune date n'a été fournie.</td></tr>";
-                    }
-                }
-                ?>
-
+                <?php if (!empty($ventes)): ?>
+                    <?php foreach ($ventes as $vente): ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($vente['DP']); ?></td>
+                            <td><?php echo htmlspecialchars($vente['QV']); ?></td>
+                            <td><?php echo htmlspecialchars($vente['DV']); ?></td>
+                            <td>
+                                <form action="annuler.php" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir annuler cette vente ?');">
+                                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($vente['id']); ?>">
+                                    <button type="submit" class="btn btn-danger">Annuler</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php elseif ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['requete'])): ?>
+                    <tr>
+                        <td colspan="4">Veuillez sélectionner une date pour afficher les ventes.</td>
+                    </tr>
+                <?php endif; ?>
             </tbody>
         </table>
     </main>
@@ -107,9 +145,10 @@
         });
     </script>
     <footer>
-        <p>&copy 2024 Tous droits réservés.</p>
-        <p>Site web créé par <a href="mailto:malali3b@gmail.com">malali3b@gmail.com</a></p>
+        <p>&copy 2025 Tous droits réservés.</p>
     </footer>
 </body>
-
 </html>
+<?php
+$cnx->close();
+?>

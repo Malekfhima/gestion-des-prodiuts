@@ -16,12 +16,12 @@ $res = mysqli_query($cnx, $req);
 <body>
     <nav>
         <ul id="left">
-            <li class="left">A propos</li>
-            <li class="left"><a href="../produit/index.html">Produits</a></li>
-            <li class="left"><a href="../vente/index.php">Ventes</a></li>
-            <li class="left"><a href="../Requetes/index.php">Requêtes</a></li>
-            <li class="left">Aide</li>
-            <li class="right"><a href="../connexion/index.html">Déconnexion</a></li>
+                <li class="left"><a href="../contact_us/index.html"> A propos</a></li>
+                <li class="left"><a href="../produit/index.html">Produits</a></li>
+                <li class="left"><a href="../vente/index.php">Ventes</a></li>
+                <li class="left"><a href="../Requetes/index.php">Requêtes</a></li>
+                <li><a href="../sp/index.php">Afficher les produits</a></li>
+                <li class="right"><a href="../logout.php">Déconnexion</a></li>
         </ul>
     </nav>
     <main>
@@ -51,8 +51,7 @@ $res = mysqli_query($cnx, $req);
         </table>
     </main>
     <footer>
-        <p>&copy; 2024 Tous droits réservés.</p>
-        <p>Site web créé par <a href="mailto:malali3b@gmail.com">malali3b@gmail.com</a></p>
+        <p>&copy; 2025 Tous droits réservés.</p>
     </footer>
 </body>
 </html>

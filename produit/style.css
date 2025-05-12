@@ -1,252 +1,308 @@
-/* Styles de base */
+/* Variables CSS */
+:root {
+  --primary-color: #93441A;
+  --secondary-color: #B67332;
+  --accent-color: #ffb400;
+  --light-bg: #EEE6D8;
+  --dark-text: #333;
+  --light-text: #fff;
+  --border-radius: 20px;
+  --transition: all 0.3s ease;
+  --shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Reset et base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #333;
-    background-color: #f4f4f4;
+  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+  color: var(--dark-text);
+  background-color: #f4f4f4;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Header amélioré */
 header {
-    background-color: #93441A;
-    padding: 10px 0;
-    border-radius: 20px;
-    margin: 3px 10px 0 10px;
+  background-color: var(--primary-color);
+  padding: 10px 0;
+  border-radius: var(--border-radius);
+  margin: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow);
 }
 
+/* Navigation moderne */
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  position: relative;
 }
 
-/* Styles pour l'icône de menu */
 .menu-icon {
-    display: none;
-    /* Caché par défaut */
-    flex-direction: column;
-    cursor: pointer;
-    padding: 10px;
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 10px;
 }
 
 .menu-icon .bar {
-    width: 25px;
-    height: 3px;
-    background-color: white;
-    margin: 4px 0;
-    transition: transform 0.3s, opacity 0.3s;
+  width: 25px;
+  height: 3px;
+  background-color: var(--light-text);
+  margin: 4px 0;
+  transition: var(--transition);
 }
 
-/* Animation pour l'icône de menu */
 .menu-icon.open .bar:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
+  transform: rotate(-45deg) translate(-5px, 6px);
 }
 
 .menu-icon.open .bar:nth-child(2) {
-    opacity: 0;
+  opacity: 0;
 }
 
 .menu-icon.open .bar:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
+  transform: rotate(45deg) translate(-5px, -6px);
 }
 
-/* Styles pour la navigation */
 .nav-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links li {
-    margin: 0 10px;
+  margin: 0 10px;
 }
 
 .nav-links li a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+  text-decoration: none;
+  color: var(--light-text);
+  font-size: 1rem;
+  padding: 8px 15px;
+  border-radius: 50px;
+  transition: var(--transition);
+  font-weight: 500;
 }
 
 .nav-links li a:hover {
-    background-color: #ffb400;
-    color: #333;
+  background-color: var(--accent-color);
+  color: var(--dark-text);
+  transform: translateY(-2px);
 }
 
 .right {
-    margin-left: auto;
-    /* Aligne l'élément de déconnexion à droite */
+  margin-left: auto;
 }
 
-/* Styles pour le contenu principal */
+/* Contenu principal */
 main {
-    background-color: #EEE6D8;
-    border-radius: 40px;
-    padding: 20px;
-    margin: 20px;
+  background-color: var(--light-bg);
+  border-radius: var(--border-radius);
+  padding: 25px;
+  margin: 20px;
+  flex: 1;
+  box-shadow: var(--shadow);
 }
 
 h1 {
-    text-align: center;
-    color: #45729A;
-    font-size: 2em;
-    margin-bottom: 20px;
+  text-align: center;
+  color: #45729A;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 25px;
+  position: relative;
+  padding-bottom: 10px;
 }
 
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--accent-color);
+}
+
+/* Formulaire amélioré */
 form {
-    max-width: 600px;
-    margin: 0 auto;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #555;
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #555;
+  font-size: 0.95rem;
 }
 
 form input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 40px;
-    font-size: 16px;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+form input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(218, 171, 58, 0.2);
+  outline: none;
 }
 
 form button {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    background-color: #DAAB3A;
-    color: white;
-    border: none;
-    border-radius: 40px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  background-color: var(--secondary-color);
+  color: var(--light-text);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 form button:hover {
-    background-color: #B67332;
+  background-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* Styles pour le pied de page */
+/* Pied de page */
 footer {
-    background-color: #B67332;
-    color: white;
-    text-align: center;
-    padding: 1rem 0;
-    border-radius: 30px;
-    margin: 20px 10px 0 10px;
+  background-color: var(--secondary-color);
+  color: var(--light-text);
+  text-align: center;
+  padding: 1.2rem 0;
+  border-radius: var(--border-radius);
+  margin: 0 10px 10px;
 }
 
 footer p {
-    margin: 5px 0;
+  margin: 5px 0;
+  font-size: 0.9rem;
 }
 
 footer a {
-    color: white;
-    text-decoration: none;
+  color: var(--light-text);
+  text-decoration: none;
+  transition: var(--transition);
 }
 
 footer a:hover {
-    text-decoration: underline;
+  color: var(--accent-color);
+  text-decoration: underline;
 }
 
-/* Messages d'erreur et de succès */
+/* Messages */
 .e {
-    color: red;
-    font-size: 0.875em;
-    margin-top: -10px;
-    margin-bottom: 10px;
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: -15px;
+  margin-bottom: 15px;
+  padding-left: 15px;
 }
 
 .success-message {
-    color: green;
-    text-align: center;
-    margin-bottom: 15px;
+  color: #2ecc71;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 500;
 }
 
-/* Styles Responsive */
+/* Responsive Design */
 @media (max-width: 768px) {
-    .menu-icon {
-        display: flex;
-        /* Afficher l'icône de menu sur les petits écrans */
-    }
+  .menu-icon {
+    display: flex;
+  }
 
-    .nav-links {
-        display: none;
-        /* Cacher le menu par défaut */
-        flex-direction: column;
-        width: 100%;
-        background-color: #93441A;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        z-index: 1000;
-    }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--primary-color);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 15px 0;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    box-shadow: var(--shadow);
+  }
 
-    .nav-links.active {
-        display: flex;
-        /* Afficher le menu lorsqu'il est activé */
-    }
+  .nav-links.active {
+    display: flex;
+  }
 
-    .nav-links li {
-        margin: 10px 0;
-    }
+  .nav-links li {
+    margin: 8px 0;
+    text-align: center;
+  }
 
-    .nav-links li a {
-        font-size: 16px;
-    }
+  .nav-links li a {
+    display: block;
+    padding: 10px;
+  }
 
-    main {
-        margin: 10px;
-        padding: 15px;
-    }
-
-    h1 {
-        font-size: 1.5em;
-    }
-
-    form input,
-    form button {
-        font-size: 14px;
-    }
+  main {
+    margin: 10px;
+    padding: 20px;
+  }
 }
 
 @media (max-width: 480px) {
-    header {
-        margin: 3px 5px 0 5px;
-    }
+  header, footer {
+    margin: 5px;
+    border-radius: 15px;
+  }
 
-    .nav-links li a {
-        font-size: 14px;
-    }
+  main {
+    padding: 15px;
+    margin: 5px;
+  }
 
-    main {
-        margin: 5px;
-        padding: 10px;
-    }
+  form input, form button {
+    padding: 10px 12px;
+  }
+}
 
-    h1 {
-        font-size: 1.2em;
-    }
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: #f0f0f0;
+  }
 
-    form input,
-    form button {
-        padding: 8px;
-        font-size: 12px;
-    }
+  main {
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+  }
 
-    footer {
-        margin: 10px 5px 0 5px;
-        padding: 0.5rem 0;
-    }
+  form input {
+    background-color: #2d2d2d;
+    color: #f0f0f0;
+    border-color: #444;
+  }
+
+  form label {
+    color: #bbb;
+  }
 }

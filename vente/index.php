@@ -12,10 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $arr2 = [$quant_0, $quant_1, $quant_2];
     $arr = [...$arr1];
     $arp = [...$arr2];
+    
     // Current date
     $d = date("Y-m-d");
-    function button1($arr, $cnx, $j, $arp)
-    {
+    
+    function button1($arr, $cnx, $j, $arp) {
         $tot = 0;
         echo "<div style=' margin: 20px ;font-weight: bold; position : absolute; top:100px; left : 700px;'>";
         for ($i = 0; $i < $j; $i++) {
@@ -25,24 +26,71 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $s = $arp[$i] * $t[0];
             $tot = $tot + $s;
             echo "
-        <p class='message' id='m1' style=''>$arr[$i] = $arp[$i] X $t[0] = $s</p><br>
-        ";
+            <p class='message' id='m1' style=''>$arr[$i] = $arp[$i] X $t[0] = $s</p><br>
+            ";
         }
         echo "<p class='message' id='m2'>montant total : $tot</p></div>";
     }
-    $j = 0;
-    // Loop through inputs and insert only non-empty pairs
+    
+    $error = false;
+    $errorMessages = [];
+    
+    // First, check stock for all products
     for ($i = 0; $i < 3; $i++) {
         if (!empty($arr1[$i]) && !empty($arr2[$i])) {
-            // Use prepared statements to prevent SQL injection
-            $stmt = $cnx->prepare("INSERT INTO vent (DP, QV, DV) VALUES (?, ?, ?)");
-            $stmt->bind_param("sis", $arr1[$i], $arr2[$i], $d);
-            $j++;
-            // Execute statement
-            $stmt->execute();
+            // Check stock availability
+            $productName = $arr1[$i];
+            $quantity = $arr2[$i];
+            
+            $stockQuery = mysqli_query($cnx, "SELECT qua FROM produit WHERE nom = '$productName'");
+            $stockData = mysqli_fetch_array($stockQuery);
+            
+            if ($stockData && $stockData['qua'] >= $quantity) {
+                // Stock is sufficient
+                continue;
+            } else {
+                $error = true;
+                $available = $stockData ? $stockData['qua'] : 0;
+                $errorMessages[] = "Stock insuffisant pour $productName. Quantité demandée: $quantity, Disponible: $available";
+            }
         }
     }
-    button1($arr, $cnx, $j, $arp);
+    
+    if (!$error) {
+        $j = 0;
+        // If all stocks are sufficient, proceed with the sale
+        for ($i = 0; $i < 3; $i++) {
+            if (!empty($arr1[$i]) && !empty($arr2[$i])) {
+                // Use prepared statements to prevent SQL injection
+                $stmt = $cnx->prepare("INSERT INTO vent (DP, QV, DV) VALUES (?, ?, ?)");
+                $stmt->bind_param("sis", $arr1[$i], $arr2[$i], $d);
+                
+                // Update stock
+                $updateStmt = $cnx->prepare("UPDATE produit SET qua = qua - ? WHERE nom = ?");
+                $updateStmt->bind_param("is", $arr2[$i], $arr1[$i]);
+                
+                if ($stmt->execute() && $updateStmt->execute()) {
+                    $j++;
+                } else {
+                    $error = true;
+                    $errorMessages[] = "Erreur lors de l'enregistrement de la vente pour " . $arr1[$i];
+                }
+            }
+        }
+        
+        if (!$error) {
+            button1($arr, $cnx, $j, $arp);
+        }
+    }
+    
+    // Display error messages if any
+    if ($error) {
+        echo "<div style='color: red; margin: 20px; font-weight: bold; position: absolute; top: 100px; left: 700px;'>";
+        foreach ($errorMessages as $message) {
+            echo "<p>$message</p>";
+        }
+        echo "<p>La vente n'a pas été enregistrée.</p></div>";
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -56,19 +104,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des ventes en ligne</title>
     <link rel="stylesheet" href="style.css">
-    <script src=""></script>
+    
     <script src="act.js"></script>
 </head>
 
 <body>
     <nav>
         <ul id="left">
-            <li class="left">A propos</li>
-            <li class="left"><a href="../produit/index.html">Produits</a></li>
-            <li class="left"><a href="../vente/index.php">Vents</a></li>
-            <li class="left"><a href="../Requetes/index.php">Requetes</a></li>
-            <li class="left">Aide</li>
-            <li class="right"><a href="../connexion/index.html">Deconnexion</a></li>
+                <li class="left"><a href="../contact_us/index.html"> A propos</a></li>
+                <li class="left"><a href="../produit/index.html">Produits</a></li>
+                <li class="left"><a href="../vente/index.php">Ventes</a></li>
+                <li class="left"><a href="../Requetes/index.php">Requêtes</a></li>
+                <li><a href="../sp/index.php">Afficher les produits</a></li>
+                <li class="right"><a href="../logout.php">Déconnexion</a></li>
         </ul>
     </nav>
     <div class="container">
@@ -90,6 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <?php
                             $i = 0;
                             $arr = [];
+                            mysqli_data_seek($res, 0); // Reset result pointer
                             while ($t = mysqli_fetch_array($res)) {
                                 echo "
                                     <option value='$t[0]'>$t[0]</option>
@@ -143,29 +192,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <input name="quant_2" type="number" class="quantite" min="1" placeholder="Entrez la quantité"
                             id="q">
                     </div>
-
-
                 </div>
                 <div id="inputContainer">
-
                 </div>
-
             </form>
         </div>
 
         <!-- Section des ventes -->
-
-        <div class="sales-section">
-
-            <br><br>
-            <form method="post">
-                <button type="submit" id="db">Voir la liste complète des ventes du jour</button>
-            </form>
-        </div>
+        
     </div>
     <footer>
-        <p>&copy 2024 Touts Droits reservée .</p>
-        <p>Site web crée par "<a href="mailto:malali3b@gmail.com">malali3b@gmail.com</a>"</p>
+        <p>&copy 2025 Touts Droits reservée .</p>
     </footer>
 </body>
 

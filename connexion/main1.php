@@ -8,7 +8,7 @@ $nb = mysqli_num_rows($res);
 if ($nb < 1) {
 
     header("refresh:0;url=index.html");
-    echo '<script>alert("makich m3ana a 5ouya !");</script>';
+    echo '<script>alert("utilisateur non trouvé !");</script>';
 } else {
     $id = mysqli_fetch_array($res);
     $_SESSION['id'] = $id[2];

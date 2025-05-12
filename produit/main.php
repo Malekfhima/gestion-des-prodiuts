@@ -31,7 +31,7 @@ if ($nb > 0) {
         sleep(1);
         header("location:../produit/index.html");
     } else {
-        die("fama moshkla");
+        die("il y a un probleme");
     }
 }
 mysqli_close($cnx);

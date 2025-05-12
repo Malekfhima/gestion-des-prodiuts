@@ -6,14 +6,14 @@ function verif() {
   let flous = document.getElementById("flous").value;
   if (nom == "") {
     document.getElementById("e3").innerHTML = "";
-    document.getElementById("e1").innerHTML = "il ism fari8";
+    document.getElementById("e1").innerHTML = "la case du nom est vide";
     document.getElementById("e2").innerHTML = "";
     document.getElementById("e4").innerHTML = "";
     document.getElementById("e5").innerHTML = "";
     return false;
   } else if (verif_nom(nom) == false) {
     document.getElementById("e3").innerHTML = "";
-    document.getElementById("e1").innerHTML = "il ism 8alit";
+    document.getElementById("e1").innerHTML = "le nom n'est pas correcte";
     document.getElementById("e2").innerHTML = "";
     document.getElementById("e4").innerHTML = "";
     document.getElementById("e5").innerHTML = "";
@@ -21,26 +21,26 @@ function verif() {
   } else if (mp1 == "") {
     document.getElementById("e3").innerHTML = "";
     document.getElementById("e1").innerHTML = "";
-    document.getElementById("e2").innerHTML = "passe fera8 ";
+    document.getElementById("e2").innerHTML = "la case du mot de passe est vide ";
     document.getElementById("e4").innerHTML = "";
     document.getElementById("e5").innerHTML = "";
     return false;
   } else if (verif_mp1(mp1) == false) {
     document.getElementById("e3").innerHTML = "";
     document.getElementById("e1").innerHTML = "";
-    document.getElementById("e2").innerHTML = "passe 8alit";
+    document.getElementById("e2").innerHTML = "le mdp n'est pas correcte";
     document.getElementById("e4").innerHTML = "";
     document.getElementById("e5").innerHTML = "";
     return false;
   } else if (mp2 == "") {
-    document.getElementById("e3").innerHTML = "iktib il passe mara o5ra hni";
+    document.getElementById("e3").innerHTML = "écriver le mdp une autre fois ici";
     document.getElementById("e1").innerHTML = "";
     document.getElementById("e2").innerHTML = "";
     document.getElementById("e4").innerHTML = "";
     document.getElementById("e5").innerHTML = "";
     return false;
   } else if (verif_mp2(mp2, mp1) == false) {
-    document.getElementById("e3").innerHTML = "iktib il passe bi shih ";
+    document.getElementById("e3").innerHTML = "écrivez le mdp correctement";
     document.getElementById("e1").innerHTML = "";
     document.getElementById("e2").innerHTML = "";
     document.getElementById("e4").innerHTML = "";
@@ -50,14 +50,14 @@ function verif() {
     document.getElementById("e3").innerHTML = "";
     document.getElementById("e1").innerHTML = "";
     document.getElementById("e2").innerHTML = "";
-    document.getElementById("e4").innerHTML = "il mail fara8";
+    document.getElementById("e4").innerHTML = "l'email est vide";
     document.getElementById("e5").innerHTML = "";
     return false;
   } else if (verif_mail(mail) == false) {
     document.getElementById("e3").innerHTML = "";
     document.getElementById("e1").innerHTML = "";
     document.getElementById("e2").innerHTML = "";
-    document.getElementById("e4").innerHTML = "mail 8alit";
+    document.getElementById("e4").innerHTML = "l'email n'est pas correcte";
     document.getElementById("e5").innerHTML = "";
     return false;
   } else if (flous == "") {
@@ -65,10 +65,10 @@ function verif() {
     document.getElementById("e1").innerHTML = "";
     document.getElementById("e2").innerHTML = "";
     document.getElementById("e4").innerHTML = "";
-    document.getElementById("e5").innerHTML = "i5tar haja";
+    document.getElementById("e5").innerHTML = "choisissez une chose";
     return false;
   } else {
-    document.getElementById("msg").innerHTML = "ahla bik fi wistna";
+    document.getElementById("msg").innerHTML = "bienvenue";
     document.getElementById("e3").innerHTML = "";
     document.getElementById("e1").innerHTML = "";
     document.getElementById("e2").innerHTML = "";

@@ -1,0 +1,36 @@
+img {
+    border-radius: 50%;
+    border: solid;
+    background-color: white;
+    
+}
+
+.card {
+    border: 2px solid black;
+    width: 500px;
+    background-color: #C19770;
+    border-radius: 30PX;
+    text-align: center;
+    padding: 20PX;
+    align-items: center;
+    margin-left: 32% ;
+    margin-top: 120px;
+
+}
+#solid{
+    border: dashed ;
+    border-radius: 10PX;
+    background-color: bisque;
+}
+h2{
+    border: solid;
+    border-radius: 10px;
+}
+p{
+    color: white;
+}
+a{
+    color: green;
+    text-decoration: none;
+    color: #000;
+}

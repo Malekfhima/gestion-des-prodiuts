@@ -1,58 +1,91 @@
-/* Styles de base */
+/* Styles de base améliorés avec reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #6a11cb;
+    --secondary-color: #2575fc;
+    --text-color: #333;
+    --light-gray: #f9f9f9;
+    --border-color: #ddd;
+    --error-color: #e74c3c;
+}
+
 body, html {
     height: 100%;
-    margin: 0;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Dégradé moderne */
-    font-family: 'Poppins', sans-serif;
-    color: #333;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
 }
 
+/* Conteneur principal responsive */
 main {
     background-color: #fff;
     border-radius: 20px;
-    padding: 30px;
+    padding: clamp(20px, 5vw, 40px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     width: 90%;
-    max-width: 400px;
+    max-width: 450px;
+    min-width: 280px;
+    margin: 20px;
     text-align: center;
+    transition: all 0.3s ease;
 }
 
+/* Optimisation pour les très petits écrans */
+@media (max-width: 320px) {
+    main {
+        border-radius: 15px;
+        padding: 15px;
+    }
+}
+
+/* Styles pour les formulaires */
 .form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 .form-icon {
-    font-size: 3rem;
-    color: #6a11cb;
-    margin-bottom: 20px;
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+    color: var(--primary-color);
+    margin-bottom: clamp(15px, 4vw, 25px);
 }
 
 h1 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: #333;
+    font-size: clamp(1.4rem, 5vw, 2rem);
+    margin-bottom: clamp(15px, 4vw, 25px);
+    color: var(--text-color);
+    font-weight: 600;
 }
 
+/* Groupes d'entrée améliorés */
 .input-group {
     display: flex;
     align-items: center;
     width: 100%;
     margin-bottom: 15px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 30px;
-    padding: 10px;
-    background-color: #f9f9f9;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    padding: 12px 15px;
+    background-color: var(--light-gray);
+    transition: all 0.3s ease;
 }
 
 .input-group i {
     margin-right: 10px;
-    color: #6a11cb;
+    color: var(--primary-color);
+    font-size: 1.1rem;
 }
 
 .input-group input {
@@ -60,99 +93,127 @@ h1 {
     outline: none;
     background: none;
     width: 100%;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 3vw, 1rem);
+    color: var(--text-color);
 }
 
 .input-group:focus-within {
-    border-color: #6a11cb;
+    border-color: var(--primary-color);
     box-shadow: 0 0 8px rgba(106, 17, 203, 0.3);
+    transform: translateY(-1px);
 }
 
+/* Cases à cocher et boutons */
 .checkbox-group {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: clamp(15px, 4vw, 25px);
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.checkbox-group input {
+    margin-right: 8px;
 }
 
 .checkbox-group label {
-    margin-left: 10px;
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 3vw, 0.95rem);
     color: #555;
 }
 
 .b {
     width: 100%;
-    padding: 12px;
-    background-color: #6a11cb;
+    padding: clamp(10px, 3vw, 14px);
+    background-color: var(--primary-color);
     color: white;
     border: none;
     border-radius: 30px;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-top: 10px;
 }
 
 .b:hover {
-    background-color: #2575fc;
+    background-color: var(--secondary-color);
     transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
+.b:active {
+    transform: translateY(0);
+}
+
+/* Liens et messages */
 .d {
-    margin-top: 15px;
-    font-size: 0.9rem;
+    margin-top: clamp(15px, 4vw, 25px);
+    font-size: clamp(0.8rem, 3vw, 0.95rem);
     color: #555;
 }
 
 .d a {
-    color: #6a11cb;
+    color: var(--primary-color);
     text-decoration: none;
     font-weight: 600;
+    transition: color 0.2s;
 }
 
 .d a:hover {
+    color: var(--secondary-color);
     text-decoration: underline;
 }
 
 .e {
-    color: red;
-    font-size: 0.875em;
+    color: var(--error-color);
+    font-size: clamp(0.75rem, 3vw, 0.875rem);
     margin-top: -10px;
     margin-bottom: 10px;
+    text-align: left;
+    width: 100%;
+    padding-left: 15px;
 }
 
-/* Styles Responsive */
-@media (max-width: 768px) {
+/* Optimisation pour l'orientation paysage sur mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    body {
+        align-items: flex-start;
+        padding-top: 20px;
+    }
+    
     main {
-        padding: 20px;
-    }
-
-    h1 {
-        font-size: 1.5rem;
-    }
-
-    .input-group input {
-        font-size: 0.9rem;
-    }
-
-    .b {
-        font-size: 0.9rem;
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 }
 
-@media (max-width: 480px) {
+/* Support pour les appareils avec dark mode */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #4a0d9b, #1a5fd9);
+    }
+    
     main {
-        padding: 15px;
+        background-color: #2d2d2d;
+        color: #f0f0f0;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
-
-    h1 {
-        font-size: 1.2rem;
+    
+    .input-group {
+        background-color: #3d3d3d;
+        border-color: #444;
     }
-
+    
     .input-group input {
-        font-size: 0.8rem;
+        color: #f0f0f0;
     }
-
-    .b {
-        font-size: 0.8rem;
+    
+    h1, .d {
+        color: #f0f0f0;
+    }
+    
+    .checkbox-group label {
+        color: #bbb;
     }
 }

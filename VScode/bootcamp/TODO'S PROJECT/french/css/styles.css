@@ -1,0 +1,112 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+header {
+    background-color: #A67A5B;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    margin-top: -0.5rem;
+}
+main {
+    padding: 2rem;
+}
+nav {
+    background-color:#C19770;
+    padding: 20px 0; 
+    border-radius: 20px;
+    
+}
+nav ul {
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0; 
+    display: flex; 
+    justify-content: center; 
+    
+}
+nav ul li {
+    margin: 0 15px; 
+    color: white; 
+    font-size: 18px; 
+    font-family: Arial, sans-serif; 
+}
+
+nav ul li:hover {
+    color: #ffb400;
+    cursor: pointer; 
+}
+.cards {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.card {
+    background-color: white;
+    border: 1PX solid #ddd;
+    width: 500PX;
+    margin-left: 50PX;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
+    border-radius: 20px;
+    height: 150px;
+    text-align: center;
+}
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+}
+h3{
+    color:blue;
+    margin: 10px;
+    
+        
+}
+
+h2{
+    background-color: blue;
+
+}
+.p1 {
+    background-color:white; 
+    padding: 20px; 
+    margin: 25PX;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    text-align: center; 
+    height: 150px; 
+
+}
+
+.T {
+    color: #333; 
+    font-size: 24px; 
+    margin-bottom: 10px;
+}
+
+.p1 p {
+    color: #666; 
+    line-height: 1.6;
+}
+.malek{
+    text-align: center;
+    background-color: #f9f9f9;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+

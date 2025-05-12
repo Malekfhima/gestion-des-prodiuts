@@ -1,0 +1,25 @@
+.b1{
+    color: white;
+    border-color: aqua;
+    font-size: 50px;
+    margin: 0 auto;
+    background-color: yellow;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 100px;    
+}
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Ensures the video takes up the entire viewport without scrolling */
+}
+
+video.background {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -100; /* Ensures the video stays behind other elements */
+    object-fit: cover; /* Ensures the video covers the entire screen without distortion */
+}
