@@ -10,7 +10,7 @@ function verif() {
     return false;
   } else if (prix.length == 0) {
     alert("Donner le Prix De produit!!");
-    return false;
+    return false; 
   } else {
     if (code(code) == false || code.length < 8) {
       alert("Verifer le code De produit");
